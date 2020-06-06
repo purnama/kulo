@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Arthur Purnama">
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <title>Hotspot · Kulo Wirobrajan</title>
+
+  <link rel="canonical" href="http://kulo.wirobrajan.hotspot">
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/signin.css" rel="stylesheet">
+  <link href="css/flag-icon.min.css" rel="stylesheet">
+
+</head>
+
+<body class="text-center">
+  $(if chap-id)
+	<form name="sendin" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+	
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	<!--
+	    function doLogin() {
+		document.sendin.username.value = document.login.username.value;
+		document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+		document.sendin.submit();
+		return false;
+	    }
+	//-->
+	</script>
+$(endif)
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#"><img src="favicon/android-icon-36x36.png" alt="Kedai Kopi Kulo - Logo"></a>
+    <button class="navbar-toggler dropdown-toggle" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span id="languageText"></span> <span id="flagIconStyle" class=""> </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto" style="text-align: right;">
+        <li id="listLangID" class="nav-item">
+          <a class="nav-link" onclick="changeLangNav('id');">Indonesia <span class="flag-icon flag-icon-id"> </span></a>
+        </li>
+        <li id="listLangEN" class="nav-item">
+          <a class="nav-link" onclick="changeLangNav('en');">English <span class="flag-icon flag-icon-en"> </span></a>
+        </li>
+        <li id="listLangDE" class="nav-item">
+          <a class="nav-link" onclick="changeLangNav('de');">Deutsch <span class="flag-icon flag-icon-de"> </span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <form name="login" action="$(link-login-only)" method="post"  $(if chap-id) onSubmit="return doLogin()" $(endif) class="form-signin" style="max-width: 400px;">
+    <img class="mb-4" src="images/logo.png" alt="Kedai Kopi Kulo - Logo" width="150" height="150">
+    <h1 class="h1 mb-1 font-weight-normal">Kedai Kopi Kulo Wirobrajan</h1>
+    <div>&nbsp;</div>
+    <label id="inputVoucherCodeLabel" for="inputVoucher" class="sr-only"></label>
+    <input type="text" id="inputVoucherCode" class="form-control" placeholder="Masukkan Kode Voucher" required
+      autofocus>
+    <input type="hidden" name="dst" value="$(link-orig)" />
+    <input type="hidden" name="popup" value="true" />
+    <div>&nbsp;</div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" id="activateInternet"></button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+  </form>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="js/popper.min.js" crossorigin="anonymous"></script>
+  <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="js/lang.js" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    window.onload = changeLang;
+  </script>
+</body>
+
+</html>
