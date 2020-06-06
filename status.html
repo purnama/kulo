@@ -31,13 +31,13 @@
   <link rel="canonical" href="http://kulo.wirobrajan.hotspot">
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="css/signin.css" rel="stylesheet">
   <link href="css/flag-icon.min.css" rel="stylesheet">
 
   <script language="text/javascript">
-    $(if advert - pending == 'yes')
+    $(if advert-pending == 'yes')
       var popup = '';
     function focusAdvert() {
       if (window.focus) popup.focus();
@@ -131,11 +131,6 @@
           </tbody>
         </table>
         $(if login-by-mac != 'yes')
-        <!-- user manager link -->
-        <p>if user manager resides on other router, replace $(hostname) by its address</p>
-        <button class="btn btn-secondary"
-          onclick="document.location='http://$(hostname)/user?subs='; return false;">Status</button>
-        <!-- end of user manager link -->
         <input id="logOff" class="btn btn-primary" type="submit">
         $(endif)
       </div>
@@ -148,8 +143,7 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="js/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-  <script src="js/popper.min.js" crossorigin="anonymous"></script>
-  <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="js/lang.js" crossorigin="anonymous"></script>
   <script type="text/javascript">
     window.onload = changeLang;
