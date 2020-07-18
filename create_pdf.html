@@ -1,0 +1,66 @@
+ <html>
+     <head>
+        <title>create PDF</title> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            var fileName;
+            var logo;
+            var img = new Image();
+            img.crossOrigin = "";
+            img.src = "https://lh3.googleusercontent.com/BFomjQwQQrqesYaI0PeneZb4MZB9uwXRo-4-PKexRkJ8p8rJE2UBe0QFJ8Va9nnmXK3KfGrwx9kvQIMR-eUn=w1833-h1921";
+            img.onload = function(){
+                logo = this;
+            }
+            function readFile(element){
+                fileName =element.target.files[0];
+            }
+            function createPDF(lines){
+                var doc; 
+                var reader = new FileReader();
+                reader.readAsText(fileName);
+                
+                reader.onload = function (event) {
+                    var csv = event.target.result;
+                    var lines = csv.split('\n');
+                    for(a = 1; a < lines.length;){
+                        if(doc == undefined){
+                            doc = new jsPDF({
+                                unit: 'mm'
+                            });
+                            doc.setFontSize(12);
+                        }else{
+                            doc.addPage();
+                        }
+                        for(i=0, x=3; i<5; i++, x=x+41){
+                            for(j=0, y=3; j<8; j++, y=y+20){
+                                var column = lines[a].split(',');
+                                if(document.getElementById("box").checked){
+                                    doc.rect(x, y, 38, 18);
+                                }
+                                doc.addImage(logo, 'jpeg', x+10, y+2, 17.55, 8.19);
+                                doc.text(column[0].replace(/\"/g, ''), x+12, y+15);
+                                a++;
+                            }
+                        }
+                    }
+                    doc.save('voucher.pdf');
+                };
+                
+                
+                
+            }
+            
+        </script>
+     </head>
+     <body>
+        Voucher CSV List: <input type="file" id="csv_file" />
+        <br />
+        <input type="checkbox" id="box" value="true" /> With Box
+        <br />
+        <input type="button" value="Generate PDF" onclick="createPDF()" />
+        <script type="text/javascript">
+            document.getElementById("csv_file").addEventListener('change', readFile, false);
+        </script>
+     </body>
+
+ </html>
